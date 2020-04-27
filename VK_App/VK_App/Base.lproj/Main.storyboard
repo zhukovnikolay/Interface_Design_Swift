@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="VK_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQh-3g-Xw4">
+                                <rect key="frame" x="25" y="79" width="86" height="31"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="26"/>
+                                <color key="textColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tb9-sY-uww">
+                                <rect key="frame" x="78" y="500" width="258" height="36"/>
+                                <color key="backgroundColor" red="0.97490284974093266" green="0.53900717096288631" blue="0.64220757109166393" alpha="0.70596390845070423" colorSpace="custom" customColorSpace="displayP3"/>
+                                <accessibility key="accessibilityConfiguration" label="ds"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="258" id="FCz-F0-kNu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="tintColor" red="1" green="0.92314327795649387" blue="0.92470157733206304" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="displayP3"/>
+                                <size key="titleShadowOffset" width="35" height="0.0"/>
+                                <state key="normal" title="LOGIN"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O2L-jv-iUm">
+                                <rect key="frame" x="78" y="436" width="258" height="34"/>
+                                <color key="backgroundColor" red="0.091531924900000006" green="0.088331721720000006" blue="0.16079264879999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="258" id="NyD-Jr-eXi"/>
+                                </constraints>
+                                <color key="textColor" red="0.41579043869999999" green="0.38172709939999999" blue="0.62747830149999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8JT-oI-pgP">
+                                <rect key="frame" x="78" y="375" width="258" height="34"/>
+                                <color key="backgroundColor" red="0.088672459952027591" green="0.088927959719714164" blue="0.15485681245981719" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="258" id="9kZ-jn-xlq"/>
+                                </constraints>
+                                <color key="textColor" red="0.43803293140139049" green="0.41736835519244736" blue="0.65467130829015541" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.19954327111051429" green="0.19613262615361038" blue="0.29374120365152701" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="BQh-3g-Xw4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="35" id="0PP-Yr-iu5"/>
+                            <constraint firstItem="O2L-jv-iUm" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="0Vv-Lf-JgJ"/>
+                            <constraint firstItem="BQh-3g-Xw4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="50a-gn-lw1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BQh-3g-Xw4" secondAttribute="trailing" constant="10" id="5ff-IH-H9S"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Tb9-sY-uww" secondAttribute="bottom" constant="5" id="Ayn-lb-yKX"/>
+                            <constraint firstItem="O2L-jv-iUm" firstAttribute="top" secondItem="8JT-oI-pgP" secondAttribute="bottom" constant="27" id="DTf-FY-fW0"/>
+                            <constraint firstItem="8JT-oI-pgP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="BQh-3g-Xw4" secondAttribute="bottom" constant="10" id="Gw5-mi-98i"/>
+                            <constraint firstItem="8JT-oI-pgP" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Mom-ZZ-UEi"/>
+                            <constraint firstItem="Tb9-sY-uww" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="gG2-NX-ENe"/>
+                            <constraint firstItem="Tb9-sY-uww" firstAttribute="top" secondItem="O2L-jv-iUm" secondAttribute="bottom" constant="30" id="tnt-OW-Z6X"/>
+                            <constraint firstItem="O2L-jv-iUm" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ws7-tf-053"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="115.84821428571428"/>
+        </scene>
+    </scenes>
+</document>
