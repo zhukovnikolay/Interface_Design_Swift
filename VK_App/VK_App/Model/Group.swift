@@ -6,4 +6,11 @@
 //  Copyright © 2020 Nikolay Zhukov. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+struct Group: Equatable {
+    
+    var name: String
+    var avatar: UIImage
+    
+}

@@ -6,4 +6,13 @@
 //  Copyright © 2020 Nikolay Zhukov. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+struct User {
+    
+    var name: String
+    var avatar: UIImage
+    var photo: UIImage
+    
+}
+

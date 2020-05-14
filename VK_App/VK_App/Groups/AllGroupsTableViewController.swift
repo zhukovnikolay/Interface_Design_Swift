@@ -10,6 +10,8 @@ import UIKit
 
 class AllGroupsTableViewController: UITableViewController {
 
+    var groups: [Group] = [Group(name: "Sport", avatar: UIImage(named: "sport")!), Group(name: "Funny Animals", avatar: UIImage(named: "funnyanimals")!), Group(name: "Travel", avatar: UIImage(named: "travel")!), Group(name: "Cooking", avatar: UIImage(named: "cooking")!)]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,25 +24,20 @@ class AllGroupsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return groups.count
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AllGroupCell", for: indexPath) as! AllGroupsTableViewCell
+        cell.groupName.text = groups[indexPath.row].name
+        cell.groupAvatar.image = groups[indexPath.row].avatar
 
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

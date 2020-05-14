@@ -10,6 +10,32 @@ import UIKit
 
 class GroupsTableViewController: UITableViewController {
 
+    var groups: [Group] = []
+    
+    @IBAction func addGroup(segue: UIStoryboardSegue) {
+        
+        // Проверяем идентификатор, чтобы убедиться, что это нужный переход
+        if segue.identifier == "addGroup" {
+        // Получаем ссылку на контроллер, с которого осуществлен переход
+            let source = segue.source as! AllGroupsTableViewController
+            
+        // Получаем индекс выделенной ячейки
+            if let indexPath = source.tableView.indexPathForSelectedRow {
+        // Получаем группу по индексу
+                let group = source.groups[indexPath.row]
+        // Добавляем группу в список групп пользователя, если такой группы еще нет
+                if !groups.contains(group) {
+                        groups.append(group)
+                    // Обновляем таблицу
+                        tableView.reloadData()
+                }
+
+            }
+        }
+
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,25 +48,21 @@ class GroupsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return groups.count
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath) as! GroupTableViewCell
+        cell.groupName.text = groups[indexPath.row].name
+        cell.groupAvatar.image = groups[indexPath.row].avatar
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -50,17 +72,16 @@ class GroupsTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        // Если была нажата кнопка «Удалить»
         if editingStyle == .delete {
-            // Delete the row from the data source
+        // Удаляем группу из массива
+            groups.remove(at: indexPath.row)
+        // И удаляем строку из таблицы
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
+
 
     /*
     // Override to support rearranging the table view.

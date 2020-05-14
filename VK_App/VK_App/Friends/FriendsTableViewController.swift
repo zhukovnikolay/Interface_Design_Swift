@@ -9,6 +9,8 @@
 import UIKit
 
 class FriendsTableViewController: UITableViewController {
+    
+    var friends: [User] = [User(name: "Василий", avatar: UIImage(named: "VasiliyAvatar")!, photo: UIImage(named: "VasiliyPhoto")!), User(name: "Снежана", avatar: UIImage(named: "SnezhanaAvatar")!, photo: UIImage(named: "SnezhanaPhoto")!)]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,28 +21,36 @@ class FriendsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "showPhotos" else { return }
+        if let indexPath = self.tableView.indexPathForSelectedRow {
+            let destination = segue.destination as! FriendsPhotosCollectionViewController
+            destination.photo = friends[indexPath.row].photo
+        }
+    }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+            // #warning Incomplete implementation, return the number of rows
+        return friends.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendTableViewCell
+            
+        cell.friendName.text = friends[indexPath.row].name
+        cell.friendAvatar.image = friends[indexPath.row].avatar
 
-        // Configure the cell...
+            // Configure the cell...
 
         return cell
     }
-    */
+        
+}
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -86,5 +96,3 @@ class FriendsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-}
