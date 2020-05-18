@@ -11,5 +11,6 @@ import UIKit
 class PhotoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var friendPhoto: UIImageView!
+    @IBOutlet weak var likeControl: ILikeIt!
     
 }

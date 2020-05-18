@@ -10,7 +10,9 @@ import UIKit
 
 class FriendsTableViewController: UITableViewController {
     
-    var friends: [User] = [User(name: "Василий", avatar: UIImage(named: "VasiliyAvatar")!, photo: UIImage(named: "VasiliyPhoto")!), User(name: "Снежана", avatar: UIImage(named: "SnezhanaAvatar")!, photo: UIImage(named: "SnezhanaPhoto")!)]
+    var friends: [User] = [User(name: "Василий", avatar: UIImage(named: "VasiliyAvatar")!, photos: [UIImage(named: "VasiliyPhoto")!, UIImage(named: "VasiliyAvatar")!]),
+                           User(name: "Снежана", avatar: UIImage(named: "SnezhanaAvatar")!, photos: [UIImage(named: "SnezhanaPhoto")!, UIImage(named: "SnezhanaPhoto2")!, UIImage(named: "SnezhanaPhoto2")!])]
+        
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +28,7 @@ class FriendsTableViewController: UITableViewController {
         guard segue.identifier == "showPhotos" else { return }
         if let indexPath = self.tableView.indexPathForSelectedRow {
             let destination = segue.destination as! FriendsPhotosCollectionViewController
-            destination.photo = friends[indexPath.row].photo
+            destination.photos = friends[indexPath.row].photos
         }
     }
 
@@ -42,7 +44,7 @@ class FriendsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendTableViewCell
             
         cell.friendName.text = friends[indexPath.row].name
-        cell.friendAvatar.image = friends[indexPath.row].avatar
+        cell.avatarView.avatar.image = friends[indexPath.row].avatar
 
             // Configure the cell...
 

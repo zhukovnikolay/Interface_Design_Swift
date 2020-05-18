@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -40,7 +40,7 @@
                                             <segue destination="X0X-ub-Spr" kind="show" id="doY-2B-d1p"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O2L-jv-iUm">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="qwerty" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O2L-jv-iUm">
                                         <rect key="frame" x="78" y="392" width="258" height="34"/>
                                         <color key="backgroundColor" red="0.091531924900000006" green="0.088331721720000006" blue="0.16079264879999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
@@ -50,7 +50,7 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8JT-oI-pgP">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="user" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8JT-oI-pgP">
                                         <rect key="frame" x="78" y="331" width="258" height="34"/>
                                         <color key="backgroundColor" red="0.088672459952027591" green="0.088927959719714164" blue="0.15485681245981719" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
@@ -142,7 +142,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.3.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eEN-mn-sdp">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.3.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eEN-mn-sdp">
                                             <rect key="frame" x="20" y="12" width="80" height="76.666666666666671"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="fLO-Tg-xld"/>
@@ -203,30 +203,44 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8Cx-aH-XCg">
-                                            <rect key="frame" x="20" y="11.666666666666664" width="80" height="77"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="Mpg-Ps-wjI"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeL-xD-biP">
                                             <rect key="frame" x="110" y="38" width="49" height="24"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZg-bc-Vxg" customClass="AvatarUIView" customModule="VK_App" customModuleProvider="target">
+                                            <rect key="frame" x="20" y="10" width="80" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="5A2-Cw-6sL"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                    <real key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                    <size key="value" width="12" height="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="OeL-xD-biP" firstAttribute="centerY" secondItem="20t-yK-tMD" secondAttribute="centerY" id="37s-TX-EQ2"/>
-                                        <constraint firstItem="8Cx-aH-XCg" firstAttribute="leading" secondItem="20t-yK-tMD" secondAttribute="leading" constant="20" id="QWR-ri-Doq"/>
+                                        <constraint firstItem="bZg-bc-Vxg" firstAttribute="leading" secondItem="20t-yK-tMD" secondAttribute="leading" constant="20" id="Ckq-7C-kwX"/>
+                                        <constraint firstItem="bZg-bc-Vxg" firstAttribute="top" secondItem="20t-yK-tMD" secondAttribute="top" constant="10" id="LZi-g9-oic"/>
+                                        <constraint firstAttribute="bottom" secondItem="bZg-bc-Vxg" secondAttribute="bottom" constant="10" id="SVE-TC-8NB"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OeL-xD-biP" secondAttribute="trailing" constant="20" symbolic="YES" id="Ur8-Be-3GO"/>
-                                        <constraint firstItem="OeL-xD-biP" firstAttribute="leading" secondItem="8Cx-aH-XCg" secondAttribute="trailing" constant="10" id="fDa-NT-b7I"/>
-                                        <constraint firstItem="8Cx-aH-XCg" firstAttribute="top" secondItem="20t-yK-tMD" secondAttribute="top" constant="10" id="fJ4-X9-cZz"/>
-                                        <constraint firstAttribute="bottom" secondItem="8Cx-aH-XCg" secondAttribute="bottom" constant="10" id="o8E-ZK-wMc"/>
+                                        <constraint firstItem="OeL-xD-biP" firstAttribute="leading" secondItem="bZg-bc-Vxg" secondAttribute="trailing" constant="10" id="yf9-sY-iHG"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="friendAvatar" destination="8Cx-aH-XCg" id="MvH-dx-mwM"/>
+                                    <outlet property="avatarView" destination="bZg-bc-Vxg" id="jvr-EB-hVq"/>
                                     <outlet property="friendName" destination="OeL-xD-biP" id="xDP-Ee-0PD"/>
                                     <segue destination="97E-BR-g10" kind="show" identifier="showPhotos" id="aMR-ml-Rcy"/>
                                 </connections>
@@ -259,7 +273,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.3.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fSZ-k3-5ZH">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.3.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fSZ-k3-5ZH">
                                             <rect key="frame" x="20" y="12" width="80" height="76.666666666666671"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="fb6-zJ-Rdc"/>
@@ -308,34 +322,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Bc8-aU-W8k">
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="2" minimumInteritemSpacing="2" sectionInsetReference="safeArea" id="Bc8-aU-W8k">
                             <size key="itemSize" width="200" height="200"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="2" minY="2" maxX="2" maxY="2"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="a2r-P5-TdC" customClass="PhotoCollectionViewCell" customModule="VK_App" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="PhotoCell" id="a2r-P5-TdC" customClass="PhotoCollectionViewCell" customModule="VK_App" customModuleProvider="target">
+                                <rect key="frame" x="2" y="2" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nyd-3j-HYx">
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" id="nyd-3j-HYx">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aNQ-7A-ioI">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aNQ-7A-ioI">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium"/>
                                         </imageView>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lpd-nf-djD" customClass="ILikeIt" customModule="VK_App" customModuleProvider="target">
+                                            <rect key="frame" x="140" y="163" width="60" height="37"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </view>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="aNQ-7A-ioI" firstAttribute="leading" secondItem="nyd-3j-HYx" secondAttribute="leading" id="Ea1-0b-OH1"/>
-                                        <constraint firstAttribute="trailing" secondItem="aNQ-7A-ioI" secondAttribute="trailing" id="SEg-b6-z78"/>
-                                        <constraint firstItem="aNQ-7A-ioI" firstAttribute="top" secondItem="nyd-3j-HYx" secondAttribute="top" id="SLB-n8-doM"/>
-                                        <constraint firstAttribute="bottom" secondItem="aNQ-7A-ioI" secondAttribute="bottom" id="cB9-m9-Ics"/>
-                                    </constraints>
                                 </collectionViewCellContentView>
                                 <connections>
                                     <outlet property="friendPhoto" destination="aNQ-7A-ioI" id="dR0-ne-4J6"/>
+                                    <outlet property="likeControl" destination="lpd-nf-djD" id="VLM-7b-vFP"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -354,7 +368,7 @@
         <scene sceneID="gmv-WK-9cw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fQy-dl-SQ0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Friends" id="pE2-mK-KzE"/>
+                    <tabBarItem key="tabBarItem" title="Friends" image="person.fill" catalog="system" id="pE2-mK-KzE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BAm-SP-EgJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -373,7 +387,7 @@
         <scene sceneID="BHR-gE-uhu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hR4-9O-HZ9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Groups" id="4p5-Ym-sgC"/>
+                    <tabBarItem key="tabBarItem" title="Groups" image="person.3.fill" catalog="system" id="4p5-Ym-sgC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qxL-th-aEe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -391,6 +405,6 @@
     </scenes>
     <resources>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
-        <image name="person.crop.square.fill" catalog="system" width="128" height="114"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
     </resources>
 </document>

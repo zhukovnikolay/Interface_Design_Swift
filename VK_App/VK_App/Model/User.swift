@@ -12,7 +12,7 @@ struct User {
     
     var name: String
     var avatar: UIImage
-    var photo: UIImage
+    var photos = [UIImage]()
     
 }
 

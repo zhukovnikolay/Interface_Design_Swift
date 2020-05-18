@@ -8,11 +8,11 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
-class FriendsPhotosCollectionViewController: UICollectionViewController {
+class FriendsPhotosCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var photo = UIImage()
+    var photos = [UIImage]()
+    let countCells = 2
+    let offset:CGFloat = 2
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,27 +20,27 @@ class FriendsPhotosCollectionViewController: UICollectionViewController {
     }
 
 
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 1
+        return photos.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCollectionViewCell
-        cell.friendPhoto.image = photo
-    
-         // Configure the cell
-    
+        cell.friendPhoto.image = photos[indexPath.item]
         return cell
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let frameCV = collectionView.frame
+        let widthCell = frameCV.width / CGFloat(countCells)
+        let heightCell = widthCell
+        let spacing = CGFloat((countCells + 1)) * offset / CGFloat(countCells)
+        return CGSize(width: widthCell - spacing, height: heightCell - (offset * 2))
+        
+    }
+    
+    
     // MARK: UICollectionViewDelegate
 
     /*
