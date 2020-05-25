@@ -13,7 +13,7 @@ class ILikeIt: UIControl {
     let likeLabel = UILabel()
     var stackView = UIStackView()
     var likeCount = 0
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupView()
