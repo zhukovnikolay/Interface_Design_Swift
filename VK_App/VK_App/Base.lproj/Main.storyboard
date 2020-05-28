@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8BX-GH-tZq">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="VK_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YoH-2i-JF0">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQh-3g-Xw4">
                                         <rect key="frame" x="20" y="20" width="86" height="31"/>
@@ -26,7 +26,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tb9-sY-uww">
-                                        <rect key="frame" x="78" y="456" width="258" height="36"/>
+                                        <rect key="frame" x="78" y="451" width="258" height="36"/>
                                         <color key="backgroundColor" red="0.97490284974093266" green="0.53900717096288631" blue="0.64220757109166393" alpha="0.70596390845070423" colorSpace="custom" customColorSpace="displayP3"/>
                                         <accessibility key="accessibilityConfiguration" label="ds"/>
                                         <constraints>
@@ -41,7 +41,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="qwerty" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O2L-jv-iUm">
-                                        <rect key="frame" x="78" y="392" width="258" height="34"/>
+                                        <rect key="frame" x="78" y="387" width="258" height="34"/>
                                         <color key="backgroundColor" red="0.091531924900000006" green="0.088331721720000006" blue="0.16079264879999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="258" id="NyD-Jr-eXi"/>
@@ -51,7 +51,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="user" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8JT-oI-pgP">
-                                        <rect key="frame" x="78" y="331" width="258" height="34"/>
+                                        <rect key="frame" x="78" y="326" width="258" height="34"/>
                                         <color key="backgroundColor" red="0.088672459952027591" green="0.088927959719714164" blue="0.15485681245981719" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="258" id="9kZ-jn-xlq"/>
@@ -92,6 +92,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="euG-B1-eNj"/>
                     <connections>
                         <outlet property="passwordInput" destination="O2L-jv-iUm" id="UB3-7m-dbn"/>
                         <outlet property="scrollView" destination="YoH-2i-JF0" id="cvf-iT-OCq"/>
@@ -217,18 +218,19 @@
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZg-bc-Vxg" customClass="AvatarUIView" customModule="VK_App" customModuleProvider="target">
                                             <rect key="frame" x="20" y="10" width="60" height="60"/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="5A2-Cw-6sL"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                    <real key="value" value="1"/>
+                                                    <real key="value" value="9"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                                                     <real key="value" value="2"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                    <size key="value" width="12" height="10"/>
+                                                    <size key="value" width="11" height="25"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                                                     <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -351,7 +353,7 @@
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lpd-nf-djD" customClass="ILikeIt" customModule="VK_App" customModuleProvider="target">
-                                            <rect key="frame" x="140" y="163" width="60" height="37"/>
+                                            <rect key="frame" x="160" y="180" width="40" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </view>
                                     </subviews>
@@ -589,6 +591,60 @@
             </objects>
             <point key="canvasLocation" x="1373.913043478261" y="385.71428571428572"/>
         </scene>
+        <!--Animation-->
+        <scene sceneID="LVI-hU-3cE">
+            <objects>
+                <viewController id="8BX-GH-tZq" customClass="AnimationViewController" customModule="VK_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vNY-yj-YlJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pPN-xl-WTk">
+                                <rect key="frame" x="142" y="438" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.41579043869999999" green="0.38172709939999999" blue="0.62747830149999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="CG8-yf-DIh"/>
+                                    <constraint firstAttribute="width" constant="30" id="J3H-Ui-yEA"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTA-iY-VLQ">
+                                <rect key="frame" x="192" y="438" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.41579043869999999" green="0.38172709939999999" blue="0.62747830149999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aux-PK-rIo">
+                                <rect key="frame" x="242" y="438" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.41579043869999999" green="0.38172709939999999" blue="0.62747830149999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="mxO-5c-VJL"/>
+                                    <constraint firstAttribute="width" constant="30" id="x10-Qu-AGG"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1995432711" green="0.19613262619999999" blue="0.29374120370000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="bTA-iY-VLQ" firstAttribute="leading" secondItem="pPN-xl-WTk" secondAttribute="trailing" constant="20" id="44G-ml-BMB"/>
+                            <constraint firstItem="bTA-iY-VLQ" firstAttribute="centerY" secondItem="SdP-XX-MtT" secondAttribute="centerY" id="4mT-5m-3vm"/>
+                            <constraint firstItem="pPN-xl-WTk" firstAttribute="centerY" secondItem="SdP-XX-MtT" secondAttribute="centerY" id="N40-60-w3q"/>
+                            <constraint firstItem="bTA-iY-VLQ" firstAttribute="centerX" secondItem="SdP-XX-MtT" secondAttribute="centerX" id="apG-lL-A5m"/>
+                            <constraint firstItem="bTA-iY-VLQ" firstAttribute="height" secondItem="vNY-yj-YlJ" secondAttribute="height" multiplier="0.0334821" id="b7X-KC-EaE"/>
+                            <constraint firstItem="bTA-iY-VLQ" firstAttribute="width" secondItem="vNY-yj-YlJ" secondAttribute="width" multiplier="0.0724638" id="emB-xo-vyo"/>
+                            <constraint firstItem="aux-PK-rIo" firstAttribute="leading" secondItem="bTA-iY-VLQ" secondAttribute="trailing" constant="20" id="l3p-Zp-tvc"/>
+                            <constraint firstItem="aux-PK-rIo" firstAttribute="centerY" secondItem="SdP-XX-MtT" secondAttribute="centerY" id="tpB-m0-Eqy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SdP-XX-MtT"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Animation" image="circle.fill" catalog="system" id="4jr-8g-2Yx"/>
+                    <connections>
+                        <outlet property="firstView" destination="pPN-xl-WTk" id="68s-7H-6Gf"/>
+                        <outlet property="secondView" destination="bTA-iY-VLQ" id="X5D-bL-HCu"/>
+                        <outlet property="thirdView" destination="aux-PK-rIo" id="31O-SI-9Fv"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toLogin" id="Ejl-ND-O8J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eKz-dU-aGv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1509" y="90"/>
+        </scene>
         <!--News-->
         <scene sceneID="fCa-zq-kr8">
             <objects>
@@ -612,6 +668,7 @@
     <resources>
         <image name="arrowshape.turn.up.right" catalog="system" width="128" height="106"/>
         <image name="bubble.left" catalog="system" width="128" height="110"/>
+        <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="doc.text.fill" catalog="system" width="115" height="128"/>
         <image name="eye.fill" catalog="system" width="128" height="78"/>
         <image name="heart" catalog="system" width="128" height="109"/>
