@@ -14,8 +14,20 @@ class FriendTableViewCell: UITableViewCell {
     
     @IBOutlet weak var avatarView: AvatarUIView!
     
+    @objc func scaleAvatar() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .autoreverse, animations: {
+            self.avatarView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        }, completion: {
+            (success) in
+            self.avatarView.transform = .identity
+        })
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        let tapOnAvatar = UITapGestureRecognizer(target: self, action: #selector(scaleAvatar))
+        avatarView.addGestureRecognizer(tapOnAvatar)
     }
 
 

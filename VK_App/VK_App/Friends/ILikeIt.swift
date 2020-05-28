@@ -28,6 +28,8 @@ class ILikeIt: UIControl {
         self.backgroundColor = .clear
         likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
         likeButton.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+//        likeButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+//        likeButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
         likeButton.tintColor = .lightGray
         likeButton.addTarget(self, action: #selector(likeAction(_:)), for: .touchUpInside)
         
@@ -53,8 +55,17 @@ class ILikeIt: UIControl {
         likeButton.isSelected.toggle()
         likeButton.tintColor = likeButton.isSelected ? .red : .lightGray
         likeLabel.textColor = likeButton.isSelected ? .red : .lightGray
-        likeCount = likeButton.isSelected ? likeCount + 1 : likeCount - 1
-        likeLabel.text = "\(likeCount)"
+        if likeButton.isSelected {
+            likeCount += 1
+            UIView.transition(with: likeLabel, duration: 0.3, options: .transitionFlipFromTop, animations: {
+                self.likeLabel.text = "\(self.likeCount)"
+            }, completion: nil)
+        } else {
+            likeCount -= 1
+            UIView.transition(with: likeLabel, duration: 0.3, options: .transitionFlipFromBottom, animations: {
+                self.likeLabel.text = "\(self.likeCount)"
+            }, completion: nil)
+        }
     }
     
 }

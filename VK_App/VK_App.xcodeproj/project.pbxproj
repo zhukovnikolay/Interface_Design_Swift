@@ -29,6 +29,7 @@
 		A6549427247AB89F00A30E5C /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6549426247AB89F00A30E5C /* News.swift */; };
 		A680D0F42471A26A001653B0 /* AvatarUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A680D0F32471A26A001653B0 /* AvatarUIView.swift */; };
 		A6A0973E2457441600024D1F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A0973D2457441600024D1F /* LoginViewController.swift */; };
+		A6BDB090248022CD002948FB /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BDB08F248022CD002948FB /* AnimationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		A6549426247AB89F00A30E5C /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		A680D0F32471A26A001653B0 /* AvatarUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarUIView.swift; sourceTree = "<group>"; };
 		A6A0973D2457441600024D1F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A6BDB08F248022CD002948FB /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				A63505E8246DBF01007627B7 /* Friends */,
 				A63505EE246DCD7C007627B7 /* Groups */,
 				A646E7F42457435C00FBA383 /* Main.storyboard */,
+				A6BDB08F248022CD002948FB /* AnimationViewController.swift */,
 				A646E7F92457435D00FBA383 /* LaunchScreen.storyboard */,
 				A6A0973D2457441600024D1F /* LoginViewController.swift */,
 				A646E7EE2457435C00FBA383 /* AppDelegate.swift */,
@@ -225,6 +228,7 @@
 				A63505F4246DD379007627B7 /* PhotoCollectionViewCell.swift in Sources */,
 				A63505ED246DC219007627B7 /* Group.swift in Sources */,
 				A6549427247AB89F00A30E5C /* News.swift in Sources */,
+				A6BDB090248022CD002948FB /* AnimationViewController.swift in Sources */,
 				A63505F0246DCD9C007627B7 /* GroupsTableViewController.swift in Sources */,
 				A63505F8246DE7FD007627B7 /* AllGroupsTableViewController.swift in Sources */,
 				A6A0973E2457441600024D1F /* LoginViewController.swift in Sources */,

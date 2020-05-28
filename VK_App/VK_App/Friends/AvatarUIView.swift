@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable class AvatarUIView: UIView {
     
-    let avatar = UIImageView()
+    var avatar = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,28 +34,31 @@ import UIKit
     
     @IBInspectable var shadowColor: UIColor = .lightGray {
         didSet {
+            setNeedsDisplay()
             self.updateShadowColor()
         }
     }
     
-    @IBInspectable var shadowOpacity: Float = 20.8 {
+    @IBInspectable var shadowOpacity: Float = 0.3 {
         didSet {
+            setNeedsDisplay()
             self.updateShadowOpacity()
         }
     }
     
     @IBInspectable var shadowRadius: CGFloat = 3 {
         didSet {
+            setNeedsDisplay()
             self.updateShadowRadius()
         }
     }
     
-    @IBInspectable var shadowOffset: CGSize = .zero {
+    @IBInspectable var shadowOffset: CGSize = CGSize(width: -1, height: 1) {
         didSet {
+            setNeedsDisplay()
             self.updateShadowColor()
         }
     }
-    
 
     func updateShadowColor() {
         self.layer.shadowColor = shadowColor.cgColor
@@ -72,6 +75,5 @@ import UIKit
     func updateShadowOffset() {
         self.layer.shadowOffset = shadowOffset
     }
-    
     
 }
