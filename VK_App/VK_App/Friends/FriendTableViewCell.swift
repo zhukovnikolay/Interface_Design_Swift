@@ -15,11 +15,13 @@ class FriendTableViewCell: UITableViewCell {
     @IBOutlet weak var avatarView: AvatarUIView!
     
     @objc func scaleAvatar() {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .autoreverse, animations: {
-            self.avatarView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
+            self.avatarView.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
         }, completion: {
             (success) in
-            self.avatarView.transform = .identity
+            UIView.animate(withDuration: 0.6, delay: 0.2, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: [], animations: {
+                self.avatarView.transform = .identity
+            }, completion: nil)
         })
     }
     
