@@ -12,13 +12,12 @@ class FriendsPhotosCollectionViewController: UICollectionViewController, UIColle
     
     var photos = [UIImage]()
     let countCells = 2
-    let offset:CGFloat = 2
+    let offset: CGFloat = 2
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
@@ -38,6 +37,19 @@ class FriendsPhotosCollectionViewController: UICollectionViewController, UIColle
         let spacing = CGFloat((countCells + 1)) * offset / CGFloat(countCells)
         return CGSize(width: widthCell - spacing, height: heightCell - (offset * 2))
         
+    }
+    
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        photoIndex = indexPath.row
+//    }
+    
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "showFullSizePhoto" else { return }
+        let destination = segue.destination as! FullSizePhotoViewController
+        let cell: PhotoCollectionViewCell = sender as! PhotoCollectionViewCell
+        destination.photos = photos
+        destination.selectedPhotoIndex = self.collectionView.indexPath(for: cell)?.row
     }
     
     
