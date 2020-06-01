@@ -29,7 +29,9 @@
 		A6549427247AB89F00A30E5C /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6549426247AB89F00A30E5C /* News.swift */; };
 		A680D0F42471A26A001653B0 /* AvatarUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A680D0F32471A26A001653B0 /* AvatarUIView.swift */; };
 		A6A0973E2457441600024D1F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A0973D2457441600024D1F /* LoginViewController.swift */; };
-		A6BDB090248022CD002948FB /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BDB08F248022CD002948FB /* AnimationViewController.swift */; };
+		A6BDB0922483C4F0002948FB /* FullSizePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BDB0912483C4F0002948FB /* FullSizePhotoViewController.swift */; };
+		A6FFDFF2248567D100F89386 /* VKStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FFDFF1248567D100F89386 /* VKStartViewController.swift */; };
+		A6FFDFF42485681F00F89386 /* VKLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FFDFF32485681F00F89386 /* VKLogoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +59,9 @@
 		A6549426247AB89F00A30E5C /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		A680D0F32471A26A001653B0 /* AvatarUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarUIView.swift; sourceTree = "<group>"; };
 		A6A0973D2457441600024D1F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		A6BDB08F248022CD002948FB /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
+		A6BDB0912483C4F0002948FB /* FullSizePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullSizePhotoViewController.swift; sourceTree = "<group>"; };
+		A6FFDFF1248567D100F89386 /* VKStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKStartViewController.swift; sourceTree = "<group>"; };
+		A6FFDFF32485681F00F89386 /* VKLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLogoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 				A63505E6246DBEF2007627B7 /* FriendsTableViewController.swift */,
 				A63505F3246DD379007627B7 /* PhotoCollectionViewCell.swift */,
 				A63505F5246DD3AD007627B7 /* FriendsPhotosCollectionViewController.swift */,
+				A6BDB0912483C4F0002948FB /* FullSizePhotoViewController.swift */,
 				A680D0F32471A26A001653B0 /* AvatarUIView.swift */,
 				A63890C92471BF7F00A15786 /* ILikeIt.swift */,
 			);
@@ -129,7 +134,8 @@
 				A63505E8246DBF01007627B7 /* Friends */,
 				A63505EE246DCD7C007627B7 /* Groups */,
 				A646E7F42457435C00FBA383 /* Main.storyboard */,
-				A6BDB08F248022CD002948FB /* AnimationViewController.swift */,
+				A6FFDFF1248567D100F89386 /* VKStartViewController.swift */,
+				A6FFDFF32485681F00F89386 /* VKLogoView.swift */,
 				A646E7F92457435D00FBA383 /* LaunchScreen.storyboard */,
 				A6A0973D2457441600024D1F /* LoginViewController.swift */,
 				A646E7EE2457435C00FBA383 /* AppDelegate.swift */,
@@ -228,17 +234,19 @@
 				A63505F4246DD379007627B7 /* PhotoCollectionViewCell.swift in Sources */,
 				A63505ED246DC219007627B7 /* Group.swift in Sources */,
 				A6549427247AB89F00A30E5C /* News.swift in Sources */,
-				A6BDB090248022CD002948FB /* AnimationViewController.swift in Sources */,
 				A63505F0246DCD9C007627B7 /* GroupsTableViewController.swift in Sources */,
+				A6FFDFF42485681F00F89386 /* VKLogoView.swift in Sources */,
 				A63505F8246DE7FD007627B7 /* AllGroupsTableViewController.swift in Sources */,
 				A6A0973E2457441600024D1F /* LoginViewController.swift in Sources */,
 				A646E7EF2457435C00FBA383 /* AppDelegate.swift in Sources */,
 				A63505EB246DC206007627B7 /* User.swift in Sources */,
 				A654941D247AAD2000A30E5C /* NewsPhotoLayout.swift in Sources */,
+				A6FFDFF2248567D100F89386 /* VKStartViewController.swift in Sources */,
 				A646E7F12457435C00FBA383 /* SceneDelegate.swift in Sources */,
 				A63505FA246DEF20007627B7 /* AllGroupsTableViewCell.swift in Sources */,
 				A680D0F42471A26A001653B0 /* AvatarUIView.swift in Sources */,
 				A6549425247AB5DF00A30E5C /* NewsViewController.swift in Sources */,
+				A6BDB0922483C4F0002948FB /* FullSizePhotoViewController.swift in Sources */,
 				A63505E5246DB7DC007627B7 /* FriendTableViewCell.swift in Sources */,
 				A63505E7246DBEF2007627B7 /* FriendsTableViewController.swift in Sources */,
 			);

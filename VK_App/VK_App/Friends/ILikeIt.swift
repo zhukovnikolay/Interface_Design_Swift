@@ -31,7 +31,7 @@ class ILikeIt: UIControl {
 //        likeButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
 //        likeButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
         likeButton.tintColor = .lightGray
-        likeButton.addTarget(self, action: #selector(likeAction(_:)), for: .touchUpInside)
+        likeButton.addTarget(self, action: #selector(likeAction), for: .touchUpInside)
         
         likeLabel.text = "\(likeCount)"
         likeLabel.textColor = .lightGray
@@ -51,20 +51,22 @@ class ILikeIt: UIControl {
         stackView.frame = bounds
     }
     
-    @objc func likeAction(_ sender: UIButton) {
+    @objc func likeAction() {
         likeButton.isSelected.toggle()
         likeButton.tintColor = likeButton.isSelected ? .red : .lightGray
         likeLabel.textColor = likeButton.isSelected ? .red : .lightGray
         if likeButton.isSelected {
             likeCount += 1
-            UIView.transition(with: likeLabel, duration: 0.3, options: .transitionFlipFromTop, animations: {
+            UIView.transition(with: likeLabel, duration: 0.4, options: .transitionFlipFromBottom, animations: {
                 self.likeLabel.text = "\(self.likeCount)"
             }, completion: nil)
+            UIView.transition(with: likeButton, duration: 0.4, options: .transitionFlipFromLeft, animations: {}, completion: nil)
         } else {
             likeCount -= 1
-            UIView.transition(with: likeLabel, duration: 0.3, options: .transitionFlipFromBottom, animations: {
+            UIView.transition(with: likeLabel, duration: 0.4, options: .transitionFlipFromTop, animations: {
                 self.likeLabel.text = "\(self.likeCount)"
             }, completion: nil)
+            UIView.transition(with: likeButton, duration: 0.4, options: .transitionFlipFromRight, animations: {}, completion: nil)
         }
     }
     
