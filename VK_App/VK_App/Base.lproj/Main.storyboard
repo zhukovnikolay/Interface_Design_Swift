@@ -595,7 +595,7 @@
         <!--Friends-->
         <scene sceneID="gmv-WK-9cw">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fQy-dl-SQ0" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fQy-dl-SQ0" customClass="CustomNavigationController" customModule="VK_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Friends" image="person.fill" catalog="system" id="pE2-mK-KzE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BAm-SP-EgJ">
@@ -614,7 +614,7 @@
         <!--Groups-->
         <scene sceneID="BHR-gE-uhu">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hR4-9O-HZ9" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hR4-9O-HZ9" customClass="CustomNavigationController" customModule="VK_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Groups" image="person.3.fill" catalog="system" id="4p5-Ym-sgC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qxL-th-aEe">
@@ -666,7 +666,7 @@
         <!--News-->
         <scene sceneID="fCa-zq-kr8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v8i-mr-UuY" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v8i-mr-UuY" customClass="CustomNavigationController" customModule="VK_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="News" image="doc.text.fill" catalog="system" id="JCr-4z-qMt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="V7w-GS-fZ8">

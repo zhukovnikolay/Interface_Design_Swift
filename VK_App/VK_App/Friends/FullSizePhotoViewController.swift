@@ -25,6 +25,7 @@ class FullSizePhotoViewController: UIViewController {
     private let transformDecrease = CGAffineTransform(scaleX: 0.9, y: 0.9)
     private let transformZero = CGAffineTransform(scaleX: 0, y: 0)
     private var panGesture: UIPanGestureRecognizer!
+    private var swipeGesture: UISwipeGestureRecognizer!
     private var currentPanDirection: PanDirection = .unknown
     private weak var currentImageView: UIImageView!
     private weak var nextImageView: UIImageView!

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6203B0224896F970032CD32 /* CustomPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6203B0124896F970032CD32 /* CustomPushAnimator.swift */; };
 		A63505E5246DB7DC007627B7 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63505E4246DB7DC007627B7 /* FriendTableViewCell.swift */; };
 		A63505E7246DBEF2007627B7 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63505E6246DBEF2007627B7 /* FriendsTableViewController.swift */; };
 		A63505EB246DC206007627B7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63505EA246DC206007627B7 /* User.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A6203B0124896F970032CD32 /* CustomPushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushAnimator.swift; sourceTree = "<group>"; };
 		A63505E4246DB7DC007627B7 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		A63505E6246DBEF2007627B7 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		A63505EA246DC206007627B7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				A646E7F02457435C00FBA383 /* SceneDelegate.swift */,
 				A646E7F72457435D00FBA383 /* Assets.xcassets */,
 				A646E7FC2457435E00FBA383 /* Info.plist */,
+				A6203B0124896F970032CD32 /* CustomPushAnimator.swift */,
 			);
 			path = VK_App;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				A6BDB0922483C4F0002948FB /* FullSizePhotoViewController.swift in Sources */,
 				A63505E5246DB7DC007627B7 /* FriendTableViewCell.swift in Sources */,
 				A63505E7246DBEF2007627B7 /* FriendsTableViewController.swift in Sources */,
+				A6203B0224896F970032CD32 /* CustomPushAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
