@@ -30,11 +30,11 @@ class ILikeIt: UIControl {
         likeButton.setImage(UIImage(systemName: "heart.fill"), for: .selected)
 //        likeButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
 //        likeButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        likeButton.tintColor = .lightGray
+        likeButton.tintColor = .link
         likeButton.addTarget(self, action: #selector(likeAction), for: .touchUpInside)
         
         likeLabel.text = "\(likeCount)"
-        likeLabel.textColor = .lightGray
+        likeLabel.textColor = .link
         
         stackView.addArrangedSubview(likeButton)
         stackView.addArrangedSubview(likeLabel)
@@ -53,8 +53,8 @@ class ILikeIt: UIControl {
     
     @objc func likeAction() {
         likeButton.isSelected.toggle()
-        likeButton.tintColor = likeButton.isSelected ? .red : .lightGray
-        likeLabel.textColor = likeButton.isSelected ? .red : .lightGray
+        likeButton.tintColor = likeButton.isSelected ? .red : .link
+        likeLabel.textColor = likeButton.isSelected ? .red : .link
         if likeButton.isSelected {
             likeCount += 1
             UIView.transition(with: likeLabel, duration: 0.4, options: .transitionFlipFromBottom, animations: {
