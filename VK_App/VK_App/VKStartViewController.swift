@@ -21,7 +21,7 @@ class VKStartViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UIView.animate(withDuration: 0, delay: 0, animations: {
+        UIView.animate(withDuration: 2, delay: 3.5, animations: {
             self.vkLogo.alpha = 0
         }, completion: {
             (success) in self.performSegue(withIdentifier: "toLogin", sender: self)
