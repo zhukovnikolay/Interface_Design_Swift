@@ -64,16 +64,16 @@ class VKLogoView: UIView {
         
         strokeStartAnimation.fromValue = 0
         strokeStartAnimation.toValue = 1
-        strokeStartAnimation.beginTime = 1
-        strokeStartAnimation.duration = 4
+        strokeStartAnimation.beginTime = 0.5
+        strokeStartAnimation.duration = 3
 
         let strokeEndAnimation = CABasicAnimation(keyPath: "strokeEnd")
         strokeEndAnimation.fromValue = 0
         strokeEndAnimation.toValue = 1.2
-        strokeEndAnimation.duration = 4
+        strokeEndAnimation.duration = 3
 
         let animationGroup = CAAnimationGroup()
-        animationGroup.duration = 5
+        animationGroup.duration = 3.5
         animationGroup.animations = [strokeStartAnimation, strokeEndAnimation]
         
         layer.add(animationGroup, forKey: "line")

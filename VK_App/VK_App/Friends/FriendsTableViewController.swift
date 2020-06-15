@@ -16,7 +16,6 @@ struct FriendsSection {
 class FriendsTableViewController: UITableViewController {
     
     @IBOutlet weak var searchFriends: UISearchBar!
-    
     var friends: [User] = [User(firstName: "Василий", lastName: "Марцыпанов", avatar:       UIImage(named: "VasiliyAvatar")!, photos: [UIImage(named: "VasiliyPhoto")!, UIImage(named: "VasiliyAvatar")!]),
                            User(firstName: "Снежана", lastName: "Денисова", avatar: UIImage(named: "SnezhanaAvatar")!, photos: [UIImage(named: "SnezhanaPhoto")!, UIImage(named: "SnezhanaPhoto2")!]),
                             User(firstName: "Lucas", lastName: "Rin", avatar: UIImage(named: "LucasAvatar")!, photos: [UIImage(named: "LucasPhoto1")!, UIImage(named: "LucasPhoto2")!]),
@@ -71,6 +70,10 @@ class FriendsTableViewController: UITableViewController {
         cell.avatarView.avatar.image = friendsSection[indexPath.section].friends[indexPath.row].avatar
         return cell
     }
+    
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchFriends.endEditing(true)
+    }
         
 }
 
@@ -82,4 +85,8 @@ extension FriendsTableViewController: UISearchBarDelegate {
         friendsSection.sort {$0.key < $1.key}
         tableView.reloadData()
 }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchFriends.endEditing(true)
+    }
+    
 }
