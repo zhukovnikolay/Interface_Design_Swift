@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Group: Equatable {
+struct GroupStruct: Equatable {
     
     var name: String
     var avatar: UIImage

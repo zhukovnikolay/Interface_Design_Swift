@@ -7,34 +7,49 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 struct FriendsSection {
     var key: String
-    var friends: [User]
+//    var friends: [UserStruct]
+    var friends = [User]()
 }
 
 class FriendsTableViewController: UITableViewController {
     
     @IBOutlet weak var searchFriends: UISearchBar!
-    var friends: [User] = [User(firstName: "Василий", lastName: "Марцыпанов", avatar:       UIImage(named: "VasiliyAvatar")!, photos: [UIImage(named: "VasiliyPhoto")!, UIImage(named: "VasiliyAvatar")!]),
-                           User(firstName: "Снежана", lastName: "Денисова", avatar: UIImage(named: "SnezhanaAvatar")!, photos: [UIImage(named: "SnezhanaPhoto")!, UIImage(named: "SnezhanaPhoto2")!]),
-                            User(firstName: "Lucas", lastName: "Rin", avatar: UIImage(named: "LucasAvatar")!, photos: [UIImage(named: "LucasPhoto1")!, UIImage(named: "LucasPhoto2")!]),
-                            User(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!]),
-                            User(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!]),
-                            User(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!]),
-                            User(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!]),
-                            User(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!]),
-                            User(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!]),
-                            User(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!])]
+//    var friends: [UserStruct] = [UserStruct(firstName: "Василий", lastName: "Марцыпанов", avatar:       UIImage(named: "VasiliyAvatar")!, photos: [UIImage(named: "VasiliyPhoto")!, UIImage(named: "VasiliyAvatar")!]),
+//                           UserStruct(firstName: "Снежана", lastName: "Денисова", avatar: UIImage(named: "SnezhanaAvatar")!, photos: [UIImage(named: "SnezhanaPhoto")!, UIImage(named: "SnezhanaPhoto2")!]),
+//                            UserStruct(firstName: "Lucas", lastName: "Rin", avatar: UIImage(named: "LucasAvatar")!, photos: [UIImage(named: "LucasPhoto1")!, UIImage(named: "LucasPhoto2")!]),
+//                            UserStruct(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!]),
+//                            UserStruct(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!]),
+//                            UserStruct(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!]),
+//                            UserStruct(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!]),
+//                            UserStruct(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!]),
+//                            UserStruct(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!]),
+//                            UserStruct(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!])]
     
+    var friends = [User]()
     var friendsSection = [FriendsSection]()
+    var vkAPI = VKAPI()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let friendsDict = Dictionary.init(grouping: friends){$0.lastName.prefix(1)}
-        friendsSection = friendsDict.map { FriendsSection(key: String($0.key), friends: $0.value) }
-        friendsSection.sort {$0.key < $1.key}
+        vkAPI.getFriendsInfo(token: Session.defaultSession.token, handler: {result in
+            switch result {
+            case .success(let users):
+                self.friends = users
+                let friendsDict = Dictionary.init(grouping: self.friends){$0.lastName.prefix(1)}
+                self.friendsSection = friendsDict.map { FriendsSection(key: String($0.key), friends: $0.value) }
+                self.friendsSection.sort {$0.key < $1.key}
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        })
+            
         searchFriends.delegate = self
 
     }
@@ -43,9 +58,10 @@ class FriendsTableViewController: UITableViewController {
         guard segue.identifier == "showPhotos" else { return }
         if let indexPath = self.tableView.indexPathForSelectedRow {
             let destination = segue.destination as! FriendsPhotosCollectionViewController
-            destination.photos = friendsSection[indexPath.section].friends[indexPath.row].photos
+//            destination.photos = friendsSection[indexPath.section].friends[indexPath.row].photos
+            destination.id = friendsSection[indexPath.section].friends[indexPath.row].id
         }
-}
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return friendsSection.count
@@ -67,7 +83,12 @@ class FriendsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendTableViewCell
             
         cell.friendName.text = friendsSection[indexPath.section].friends[indexPath.row].firstName + " " + friendsSection[indexPath.section].friends[indexPath.row].lastName
-        cell.avatarView.avatar.image = friendsSection[indexPath.section].friends[indexPath.row].avatar
+
+        AF.request(friendsSection[indexPath.section].friends[indexPath.row].avatar).responseImage { response in
+            if case .success(let image) = response.result {
+                cell.avatarView.avatar.image = image
+            }
+        }
         return cell
     }
     

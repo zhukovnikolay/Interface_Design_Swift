@@ -11,12 +11,24 @@ import UIKit
 class FriendsPhotosCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var photos = [UIImage]()
+    let vkAPI = VKAPI()
+    var id: Int = 0
     let countCells = 2
     let offset: CGFloat = 2
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+//        vkAPI.getPhotos(token: Session.defaultSession.token, ownerId: id, handler: {result in
+//            switch result {
+//            case .success(let photos):
+//                self.photos = photos
+//                self.collectionView.reloadData()
+//            case .failure(let error):
+//                print(error)
+//            }
+//        })
+        
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -10,7 +10,7 @@ import UIKit
 
 class AllGroupsTableViewController: UITableViewController {
 
-    var groups: [Group] = [Group(name: "Sport", avatar: UIImage(named: "sport")!), Group(name: "Funny Animals", avatar: UIImage(named: "funnyanimals")!), Group(name: "Travel", avatar: UIImage(named: "travel")!), Group(name: "Cooking", avatar: UIImage(named: "cooking")!)]
+    var groups: [GroupStruct] = [GroupStruct(name: "Sport", avatar: UIImage(named: "sport")!), GroupStruct(name: "Funny Animals", avatar: UIImage(named: "funnyanimals")!), GroupStruct(name: "Travel", avatar: UIImage(named: "travel")!), GroupStruct(name: "Cooking", avatar: UIImage(named: "cooking")!)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
