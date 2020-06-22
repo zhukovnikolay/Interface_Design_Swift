@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct User {
+struct UserStruct {
     
     var firstName: String
     var lastName: String

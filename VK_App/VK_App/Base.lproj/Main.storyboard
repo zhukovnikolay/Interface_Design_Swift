@@ -36,6 +36,7 @@
                     </view>
                     <connections>
                         <outlet property="webView" destination="BbI-oK-Nf6" id="bF4-32-u7O"/>
+                        <segue destination="X0X-ub-Spr" kind="presentation" identifier="toMainScreen" modalPresentationStyle="fullScreen" id="YnN-1I-DOC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KrQ-dK-9pp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -710,6 +711,9 @@
             <point key="canvasLocation" x="1378.2608695652175" y="-1067.4107142857142"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="YnN-1I-DOC"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.right" catalog="system" width="128" height="106"/>
         <image name="bubble.left" catalog="system" width="128" height="110"/>

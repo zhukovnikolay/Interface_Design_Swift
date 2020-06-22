@@ -20,6 +20,9 @@
 		A63505F8246DE7FD007627B7 /* AllGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63505F7246DE7FD007627B7 /* AllGroupsTableViewController.swift */; };
 		A63505FA246DEF20007627B7 /* AllGroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63505F9246DEF20007627B7 /* AllGroupsTableViewCell.swift */; };
 		A63890CA2471BF7F00A15786 /* ILikeIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63890C92471BF7F00A15786 /* ILikeIt.swift */; };
+		A63E763724A116F2000FCD7A /* FriendsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63E763624A116F2000FCD7A /* FriendsResponse.swift */; };
+		A63E763B24A11BC2000FCD7A /* PhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63E763A24A11BC2000FCD7A /* PhotoResponse.swift */; };
+		A63E763D24A12642000FCD7A /* GroupsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63E763C24A12642000FCD7A /* GroupsResponse.swift */; };
 		A646E7EF2457435C00FBA383 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A646E7EE2457435C00FBA383 /* AppDelegate.swift */; };
 		A646E7F12457435C00FBA383 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A646E7F02457435C00FBA383 /* SceneDelegate.swift */; };
 		A646E7F62457435C00FBA383 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A646E7F42457435C00FBA383 /* Main.storyboard */; };
@@ -55,6 +58,9 @@
 		A63505F7246DE7FD007627B7 /* AllGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsTableViewController.swift; sourceTree = "<group>"; };
 		A63505F9246DEF20007627B7 /* AllGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsTableViewCell.swift; sourceTree = "<group>"; };
 		A63890C92471BF7F00A15786 /* ILikeIt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ILikeIt.swift; sourceTree = "<group>"; };
+		A63E763624A116F2000FCD7A /* FriendsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsResponse.swift; sourceTree = "<group>"; };
+		A63E763A24A11BC2000FCD7A /* PhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResponse.swift; sourceTree = "<group>"; };
+		A63E763C24A12642000FCD7A /* GroupsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsResponse.swift; sourceTree = "<group>"; };
 		A646E7EB2457435C00FBA383 /* VK_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A646E7EE2457435C00FBA383 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A646E7F02457435C00FBA383 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +150,17 @@
 			path = Groups;
 			sourceTree = "<group>";
 		};
+		A63E763524A1167F000FCD7A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				A68CC615249A9F71000C5418 /* VKAPI.swift */,
+				A63E763624A116F2000FCD7A /* FriendsResponse.swift */,
+				A63E763A24A11BC2000FCD7A /* PhotoResponse.swift */,
+				A63E763C24A12642000FCD7A /* GroupsResponse.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		A646E7E22457435B00FBA383 = {
 			isa = PBXGroup;
 			children = (
@@ -165,13 +182,13 @@
 		A646E7ED2457435C00FBA383 /* VK_App */ = {
 			isa = PBXGroup;
 			children = (
+				A63E763524A1167F000FCD7A /* API */,
 				A6549417247AAA2900A30E5C /* News */,
 				A63505E9246DC0AC007627B7 /* Model */,
 				A63505E8246DBF01007627B7 /* Friends */,
 				A63505EE246DCD7C007627B7 /* Groups */,
 				A646E7F42457435C00FBA383 /* Main.storyboard */,
 				A6CA0023249BE64100111E4C /* WebLoginViewController.swift */,
-				A68CC615249A9F71000C5418 /* VKAPI.swift */,
 				A6FFDFF1248567D100F89386 /* VKStartViewController.swift */,
 				A6FFDFF32485681F00F89386 /* VKLogoView.swift */,
 				A646E7F92457435D00FBA383 /* LaunchScreen.storyboard */,
@@ -325,6 +342,7 @@
 				A6FFDFF42485681F00F89386 /* VKLogoView.swift in Sources */,
 				A63505F8246DE7FD007627B7 /* AllGroupsTableViewController.swift in Sources */,
 				A6A0973E2457441600024D1F /* LoginViewController.swift in Sources */,
+				A63E763D24A12642000FCD7A /* GroupsResponse.swift in Sources */,
 				A646E7EF2457435C00FBA383 /* AppDelegate.swift in Sources */,
 				A63505EB246DC206007627B7 /* User.swift in Sources */,
 				A654941D247AAD2000A30E5C /* NewsPhotoLayout.swift in Sources */,
@@ -332,6 +350,8 @@
 				A646E7F12457435C00FBA383 /* SceneDelegate.swift in Sources */,
 				A63505FA246DEF20007627B7 /* AllGroupsTableViewCell.swift in Sources */,
 				A680D0F42471A26A001653B0 /* AvatarUIView.swift in Sources */,
+				A63E763724A116F2000FCD7A /* FriendsResponse.swift in Sources */,
+				A63E763B24A11BC2000FCD7A /* PhotoResponse.swift in Sources */,
 				A6549425247AB5DF00A30E5C /* NewsViewController.swift in Sources */,
 				A6BDB0922483C4F0002948FB /* FullSizePhotoViewController.swift in Sources */,
 				A63505E5246DB7DC007627B7 /* FriendTableViewCell.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 
 class GroupsTableViewController: UITableViewController {
 
-    var groups: [Group] = []
+    var groups: [GroupStruct] = []
     
     @IBAction func addGroup(segue: UIStoryboardSegue) {
         
