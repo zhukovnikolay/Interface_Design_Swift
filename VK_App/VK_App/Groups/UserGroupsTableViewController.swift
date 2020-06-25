@@ -1,8 +1,8 @@
 //
-//  GroupsTableViewController.swift
+//  UserGroupsTableViewController.swift
 //  VK_App
 //
-//  Created by Nikolay Zhukov on 14.05.2020.
+//  Created by Nikolay Zhukov on 25.06.2020.
 //  Copyright © 2020 Nikolay Zhukov. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-class GroupsTableViewController: UITableViewController {
+class UserGroupsTableViewController: UITableViewController {
 
     var groups: [Group] = []
     @IBOutlet weak var searchGroups: UISearchBar!
@@ -84,7 +84,7 @@ class GroupsTableViewController: UITableViewController {
 
 }
 
-extension GroupsTableViewController: UISearchBarDelegate {
+extension UserGroupsTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if !searchText.isEmpty {
             vkAPI.groupSearch(token: Session.defaultSession.token, query: searchText, handler: {result in

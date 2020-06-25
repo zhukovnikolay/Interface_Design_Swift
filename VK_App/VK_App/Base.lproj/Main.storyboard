@@ -166,14 +166,19 @@
         <!--Groups-->
         <scene sceneID="dE4-ig-QVg">
             <objects>
-                <tableViewController id="QpL-Zl-6vD" customClass="GroupsTableViewController" customModule="VK_App" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="QpL-Zl-6vD" customClass="UserGroupsTableViewController" customModule="VK_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zr6-qh-hlF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="k0V-0o-lVM">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupCell" id="Qhl-be-gB1" customClass="GroupTableViewCell" customModule="VK_App" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="72" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qhl-be-gB1" id="Mu5-QR-aSd">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -212,13 +217,10 @@
                             <outlet property="delegate" destination="QpL-Zl-6vD" id="FZV-yV-GWx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Groups" id="XHX-AO-89J">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Fmn-ZM-Jqx">
-                            <connections>
-                                <segue destination="luO-39-zoQ" kind="show" id="G00-gV-gNw"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Groups" id="XHX-AO-89J"/>
+                    <connections>
+                        <outlet property="searchGroups" destination="k0V-0o-lVM" id="zd1-CJ-9OO"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L3A-px-JRw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

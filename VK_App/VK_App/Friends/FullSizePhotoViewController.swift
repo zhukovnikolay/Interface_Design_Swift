@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 enum PanDirection {
     case unknown
@@ -19,7 +21,8 @@ class FullSizePhotoViewController: UIViewController {
     @IBOutlet weak var firstPhoto: UIImageView!
     @IBOutlet weak var nextPhoto: UIImageView!
     
-    var photos = [UIImage]()
+    var photos = [Photo]()
+    var photosURLInHighQuality = [String]()
     var selectedPhotoIndex: Int!
     
     private let transformDecrease = CGAffineTransform(scaleX: 0.9, y: 0.9)
@@ -34,7 +37,7 @@ class FullSizePhotoViewController: UIViewController {
         var photoIndex = 0
         if currentPanDirection == .unknown || currentPanDirection == .left {
             photoIndex = selectedPhotoIndex + 1
-            photoIndex = min(photoIndex, photos.count - 1)
+            photoIndex = min(photoIndex, photosURLInHighQuality.count - 1)
         } else if currentPanDirection == .right {
             photoIndex = selectedPhotoIndex - 1
             photoIndex = max(photoIndex, 0)
@@ -58,10 +61,11 @@ class FullSizePhotoViewController: UIViewController {
         nextImageView.alpha = 0
         nextImageView.transform = transformZero
         
-        currentImageView.image = photos[selectedPhotoIndex]
-        nextImageView.image = photos[nextPhotoIndex]
+        currentImageView.af.setImage(withURL: URL(string: photosURLInHighQuality[selectedPhotoIndex])!)
         
-        if photos.count > 1 {
+        nextImageView.af.setImage(withURL: URL(string: photosURLInHighQuality[nextPhotoIndex])!)
+        
+        if photosURLInHighQuality.count > 1 {
             panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
             panGesture.minimumNumberOfTouches = 1
             currentImageView.addGestureRecognizer(panGesture)
@@ -78,10 +82,6 @@ class FullSizePhotoViewController: UIViewController {
             animatePhotoImageViewChanged(with: translation)
         case .ended:
             animatePhotoImageViewEnd()
-//        case .cancelled:
-//            currentImageView.center.x = self.view.center.x
-//        case .failed:
-//            <#code#>
         default: return
         }
     }
@@ -115,7 +115,7 @@ class FullSizePhotoViewController: UIViewController {
     }
     
     private func photoSwapping(direction: PanDirection) {
-        self.nextImageView.image = photos[nextPhotoIndex]
+        nextImageView.af.setImage(withURL: URL(string: photosURLInHighQuality[nextPhotoIndex])!)
         
         switch direction {
         case .left:
