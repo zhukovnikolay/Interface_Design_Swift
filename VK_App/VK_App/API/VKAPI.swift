@@ -8,10 +8,12 @@
 
 import UIKit
 import Alamofire
+import RealmSwift
 
 class VKAPI {
     
     let vkURL = "https://api.vk.com/method/"
+    let realm = try! Realm()
     
     
 //    func requestData(requestURL: String, parameters: [String: Any]) {
@@ -37,9 +39,7 @@ class VKAPI {
         ]
         
         let requestURL = vkURL + "friends.get"
-//        AF.request(requestURL, method: .post, parameters: parameters).responseJSON(completionHandler: { (response) in
-//            print(response.value ?? 0)
-//        })
+        
         AF.request(requestURL,
                    method: .post,
                    parameters: parameters)
@@ -48,12 +48,38 @@ class VKAPI {
             do {
                 let friends = try JSONDecoder().decode(FriendsResponse.self, from: data)
                 handler(.success(friends.response.items))
-                
+                self.saveFriends(friendsList: friends.response.items)
             } catch {
                 handler(.failure(error))
             }
         })
     }
+    
+    func saveFriends(friendsList: [User]) {
+        let realmUser = User()
+        friendsList.forEach {
+            realmUser.avatar = $0.avatar
+            realmUser.firstName = $0.firstName
+            realmUser.id = $0.id
+            realmUser.lastName = $0.lastName
+            realmUser.status = $0.status
+        }
+        try! realm.write {
+            realm.add(realmUser)
+        }
+    }
+    
+    func saveGroups(groupsList: [Group]) {
+        let realmGroup = Group()
+        groupsList.forEach {
+            realmGroup.avatar = $0.avatar
+            realmGroup.name = $0.name
+        }
+        try! realm.write {
+            realm.add(realmGroup)
+        }
+    }
+    
     
     func getPhotos(token: String, ownerId: Int, handler: @escaping (Result<[Photo], Error>) -> Void) {
         
@@ -79,11 +105,6 @@ class VKAPI {
                 handler(.failure(error))
             }
         })
-//        AF.request(requestURL, method: .post, parameters: parameters).responseJSON(completionHandler: { (response) in
-//            print(response.value ?? 0)
-//        })
-        
-        
     }
     
     
@@ -104,7 +125,10 @@ class VKAPI {
             guard let data = response.value else { return }
             do {
                 let groups = try JSONDecoder().decode(GroupsResponse.self, from: data)
-                handler(.success(groups.response.items)) }
+                handler(.success(groups.response.items))
+                self.saveGroups(groupsList: groups.response.items)
+                print(self.realm.objects(Group.self))
+            }
             catch {
                 handler(.failure(error))
             }
@@ -114,7 +138,7 @@ class VKAPI {
 //        })
     }
     
-    func groupSearch(token: String, query: String, handler: @escaping (Result<[String: Any]?, Error>) -> Void) {
+    func groupSearch(token: String, query: String, handler: @escaping (Result<[Group]?, Error>) -> Void) {
         
         let parameters: Parameters = [
             "v": "5.110",
@@ -123,14 +147,16 @@ class VKAPI {
         ]
         
         let requestURL = vkURL + "groups.search"
-        AF.request(requestURL, method: .post, parameters: parameters).validate().responseJSON(completionHandler: { response in
-            switch response.result {
-            case .success(let result):
-                if let result = result as? [String: Any] {
-                    handler (.success(result)) }
-                    else { return }
-            case .failure(let error):
-                handler (.failure(error))
+        AF.request(requestURL,
+                   method: .post,
+                   parameters: parameters)
+            .responseData(completionHandler: { response in
+            guard let data = response.value else { return }
+            do {
+                let groups = try JSONDecoder().decode(GroupsResponse.self, from: data)
+                handler(.success(groups.response.items)) }
+            catch {
+                handler(.failure(error))
             }
         })
     }

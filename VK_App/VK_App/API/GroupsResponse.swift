@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct GroupsResponse: Decodable {
     let response: GroupsData
@@ -14,17 +15,16 @@ struct GroupsResponse: Decodable {
 
 struct GroupsData: Decodable {
     let items: [Group]
+    var count: Int
 }
 
-class Group: Decodable {
+class Group: Object, Decodable {
     
-    dynamic var name: String = ""
-    dynamic var membersCount: Int = 0
-    dynamic var avatar: String = ""
+    @objc dynamic var name: String = ""
+    @objc dynamic var avatar: String = ""
     
     enum CodingKeys: String, CodingKey {
         case name
-        case membersCount = "members_count"
         case avatar = "photo_50"
     }
     

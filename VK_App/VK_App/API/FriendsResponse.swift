@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct FriendsResponse: Decodable {
     let response: FriendsData
@@ -17,13 +18,13 @@ struct FriendsData: Decodable {
 }
 
 
-class User: Decodable {
+class User: Object, Decodable {
     
-    dynamic var id: Int = 0
-    dynamic var firstName: String = ""
-    dynamic var lastName: String = ""
-    dynamic var avatar: String = ""
-    dynamic var status: Int = 0
+    @objc dynamic var id: Int = 0
+    @objc dynamic var firstName: String = ""
+    @objc dynamic var lastName: String = ""
+    @objc dynamic var avatar: String = ""
+    @objc dynamic var status: Int = 0
     
     enum CodingKeys: String, CodingKey {
         case id

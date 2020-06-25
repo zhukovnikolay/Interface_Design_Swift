@@ -67,11 +67,6 @@ extension WebLoginViewController: WKNavigationDelegate {
         Session.defaultSession.token = params["access_token"] ?? ""
         Session.defaultSession.userId = params["user_id"] ?? ""
         
-//        vkAPI.getFriendsInfo(token: Session.defaultSession.token)
-//        vkAPI.getPhotos(token: Session.defaultSession.token, ownerId: Session.defaultSession.userId)
-//        vkAPI.getUserGroups(token: Session.defaultSession.token, userId: Session.defaultSession.userId)
-//        vkAPI.groupSearch(token: Session.defaultSession.token, query: "Geekbrains")
-        
         decisionHandler(.cancel)
         
         self.performSegue(withIdentifier: "toMainScreen", sender: self)

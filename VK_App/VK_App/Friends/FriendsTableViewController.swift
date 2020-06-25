@@ -12,23 +12,12 @@ import AlamofireImage
 
 struct FriendsSection {
     var key: String
-//    var friends: [UserStruct]
     var friends = [User]()
 }
 
 class FriendsTableViewController: UITableViewController {
     
     @IBOutlet weak var searchFriends: UISearchBar!
-//    var friends: [UserStruct] = [UserStruct(firstName: "Василий", lastName: "Марцыпанов", avatar:       UIImage(named: "VasiliyAvatar")!, photos: [UIImage(named: "VasiliyPhoto")!, UIImage(named: "VasiliyAvatar")!]),
-//                           UserStruct(firstName: "Снежана", lastName: "Денисова", avatar: UIImage(named: "SnezhanaAvatar")!, photos: [UIImage(named: "SnezhanaPhoto")!, UIImage(named: "SnezhanaPhoto2")!]),
-//                            UserStruct(firstName: "Lucas", lastName: "Rin", avatar: UIImage(named: "LucasAvatar")!, photos: [UIImage(named: "LucasPhoto1")!, UIImage(named: "LucasPhoto2")!]),
-//                            UserStruct(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!]),
-//                            UserStruct(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!]),
-//                            UserStruct(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!]),
-//                            UserStruct(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!]),
-//                            UserStruct(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!]),
-//                            UserStruct(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!]),
-//                            UserStruct(firstName: "Ксения", lastName: "Морковкина", avatar: UIImage(named: "KseniaAvatar")!, photos: [UIImage(named: "KseniaPhoto1")!, UIImage(named: "KseniaPhoto2")!, UIImage(named: "KseniaPhoto3")!])]
     
     var friends = [User]()
     var friendsSection = [FriendsSection]()
@@ -58,7 +47,6 @@ class FriendsTableViewController: UITableViewController {
         guard segue.identifier == "showPhotos" else { return }
         if let indexPath = self.tableView.indexPathForSelectedRow {
             let destination = segue.destination as! FriendsPhotosCollectionViewController
-//            destination.photos = friendsSection[indexPath.section].friends[indexPath.row].photos
             destination.id = friendsSection[indexPath.section].friends[indexPath.row].id
         }
     }
@@ -84,11 +72,8 @@ class FriendsTableViewController: UITableViewController {
             
         cell.friendName.text = friendsSection[indexPath.section].friends[indexPath.row].firstName + " " + friendsSection[indexPath.section].friends[indexPath.row].lastName
 
-        AF.request(friendsSection[indexPath.section].friends[indexPath.row].avatar).responseImage { response in
-            if case .success(let image) = response.result {
-                cell.avatarView.avatar.image = image
-            }
-        }
+        cell.avatarView.avatar.af.setImage(withURL: URL(string: friendsSection[indexPath.section].friends[indexPath.row].avatar)!, placeholderImage: UIImage(systemName: "person.fill"))
+        
         return cell
     }
     
