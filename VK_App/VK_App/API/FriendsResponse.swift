@@ -26,6 +26,10 @@ class User: Object, Decodable {
     @objc dynamic var avatar: String = ""
     @objc dynamic var status: Int = 0
     
+    override class func primaryKey() -> String? {
+        return "id"
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id
         case firstName = "first_name"
