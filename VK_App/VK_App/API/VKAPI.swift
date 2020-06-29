@@ -13,7 +13,7 @@ import RealmSwift
 class VKAPI {
     
     let vkURL = "https://api.vk.com/method/"
-    let realm = try! Realm()
+//    let realm = try! Realm()
     
     
 //    func requestData(requestURL: String, parameters: [String: Any]) {
@@ -46,9 +46,9 @@ class VKAPI {
             .responseData(completionHandler: { response in
             guard let data = response.data else { return }
             do {
-                let friends = try JSONDecoder().decode(FriendsResponse.self, from: data)
-                handler(.success(friends.response.items))
-                self.saveFriends(friendsList: friends.response.items)
+                let friends = try JSONDecoder().decode(FriendsResponse.self, from: data).response.items
+                handler(.success(friends))
+                self.saveFriends(friendsList: friends)
             } catch {
                 handler(.failure(error))
             }
@@ -63,10 +63,11 @@ class VKAPI {
             realmUser.id = $0.id
             realmUser.lastName = $0.lastName
             realmUser.status = $0.status
+            
         }
-        try! realm.write {
-            realm.add(realmUser)
-        }
+//        try! realm.write {
+//            realm.add(realmUser, update: .all)
+//        }
     }
     
     func saveGroups(groupsList: [Group]) {
@@ -75,9 +76,9 @@ class VKAPI {
             realmGroup.avatar = $0.avatar
             realmGroup.name = $0.name
         }
-        try! realm.write {
-            realm.add(realmGroup)
-        }
+//        try! realm.write {
+//            realm.add(realmGroup, update: .all)
+//        }
     }
     
     
@@ -99,8 +100,8 @@ class VKAPI {
             .responseData(completionHandler: { response in
             guard let data = response.value else { return }
             do {
-                let photos = try JSONDecoder().decode(PhotosResponse.self, from: data)
-                handler(.success(photos.response.items)) }
+                let photos = try JSONDecoder().decode(PhotosResponse.self, from: data).response.items
+                handler(.success(photos)) }
             catch {
                 handler(.failure(error))
             }
@@ -124,10 +125,8 @@ class VKAPI {
             .responseData(completionHandler: { response in
             guard let data = response.value else { return }
             do {
-                let groups = try JSONDecoder().decode(GroupsResponse.self, from: data)
-                handler(.success(groups.response.items))
-                self.saveGroups(groupsList: groups.response.items)
-                print(self.realm.objects(Group.self))
+                let groups = try JSONDecoder().decode(GroupsResponse.self, from: data).response.items
+                handler(.success(groups))
             }
             catch {
                 handler(.failure(error))
@@ -153,8 +152,8 @@ class VKAPI {
             .responseData(completionHandler: { response in
             guard let data = response.value else { return }
             do {
-                let groups = try JSONDecoder().decode(GroupsResponse.self, from: data)
-                handler(.success(groups.response.items)) }
+                let groups = try JSONDecoder().decode(GroupsResponse.self, from: data).response.items
+                handler(.success(groups)) }
             catch {
                 handler(.failure(error))
             }
