@@ -20,7 +20,6 @@ struct GroupsData: Decodable {
 
 class Group: Object, Decodable {
     
-    
     @objc dynamic var id: Int = 0
     @objc dynamic var name: String = ""
     @objc dynamic var avatar: String = ""
@@ -30,6 +29,7 @@ class Group: Object, Decodable {
     }
     
     enum CodingKeys: String, CodingKey {
+        case id
         case name
         case avatar = "photo_50"
     }

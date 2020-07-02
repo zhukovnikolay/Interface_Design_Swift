@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import RealmSwift
 
 struct FriendsSection {
     var key: String
@@ -25,7 +26,28 @@ class FriendsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadFriendsFromDatabase()
+//        Раскомментировать, если нужна загрузка из ВК
+//        loadFriendsFromVK()
+        searchFriends.delegate = self
+    }
+    
+    func loadFriendsFromDatabase() {
+        do {
+            let realm = try Realm()
+            let realmFriends = realm.objects(User.self).self.filter("firstName != %@", "DELETED")
+            self.friends = Array(realmFriends)
+            let friendsDict = Dictionary.init(grouping: self.friends){$0.lastName.prefix(1)}
+            self.friendsSection = friendsDict.map { FriendsSection(key: String($0.key), friends: $0.value) }
+            self.friendsSection.sort {$0.key < $1.key}
+            self.tableView.reloadData()
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    func loadFriendsFromVK() {
         vkAPI.getFriendsInfo(token: Session.defaultSession.token, handler: {result in
             switch result {
             case .success(let users):
@@ -38,9 +60,6 @@ class FriendsTableViewController: UITableViewController {
                 print(error)
             }
         })
-            
-        searchFriends.delegate = self
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

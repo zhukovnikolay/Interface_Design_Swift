@@ -56,31 +56,18 @@ class VKAPI {
     }
     
     func saveFriends(friendsList: [User]) {
-        let realmUser = User()
-        friendsList.forEach {
-            realmUser.avatar = $0.avatar
-            realmUser.firstName = $0.firstName
-            realmUser.id = $0.id
-            realmUser.lastName = $0.lastName
-            realmUser.status = $0.status
-            
+        do {
+            let realm = try Realm()
+            let oldValue = realm.objects(User.self)
+            try realm.write {
+                realm.delete(oldValue)
+                realm.add(friendsList, update: .modified)
+            }
         }
-//        try! realm.write {
-//            realm.add(realmUser, update: .all)
-//        }
-    }
-    
-    func saveGroups(groupsList: [Group]) {
-        let realmGroup = Group()
-        groupsList.forEach {
-            realmGroup.avatar = $0.avatar
-            realmGroup.name = $0.name
+        catch {
+            print (error)
         }
-//        try! realm.write {
-//            realm.add(realmGroup, update: .all)
-//        }
     }
-    
     
     func getPhotos(token: String, ownerId: Int, handler: @escaping (Result<[Photo], Error>) -> Void) {
         
@@ -101,18 +88,34 @@ class VKAPI {
             guard let data = response.value else { return }
             do {
                 let photos = try JSONDecoder().decode(PhotosResponse.self, from: data).response.items
-                handler(.success(photos)) }
+                handler(.success(photos))
+                self.savePhotos(photoList: photos, userId: ownerId)
+            }
             catch {
                 handler(.failure(error))
             }
         })
     }
     
+    func savePhotos(photoList: [Photo], userId: Int) {
+        do {
+            let realm = try Realm()
+            let filter = "ownerId == " + String(userId)
+            let oldValue = realm.objects(Photo.self).filter(filter)
+            try realm.write {
+                realm.delete(oldValue)
+                realm.add(photoList, update: .modified)
+            }
+        }
+        catch {
+            print (error)
+        }
+    }
     
     func getUserGroups(token: String, userId: String, handler: @escaping (Result<[Group], Error>) -> Void) {
         
         let parameters: Parameters = [
-            "v": "5.110",
+            "v": "5.120",
             "access_token": token,
             "user_id": userId,
             "extended": "1"
@@ -127,14 +130,26 @@ class VKAPI {
             do {
                 let groups = try JSONDecoder().decode(GroupsResponse.self, from: data).response.items
                 handler(.success(groups))
+                self.saveGroups(groupsList: groups)
             }
             catch {
                 handler(.failure(error))
             }
         })
-//        AF.request(requestURL, method: .post, parameters: parameters).responseJSON(completionHandler: { (response) in
-//            print(response.value ?? 0)
-//        })
+    }
+    
+    func saveGroups(groupsList: [Group]) {
+        do {
+            let realm = try Realm()
+            let oldValue = realm.objects(Group.self)
+            try realm.write {
+                realm.delete(oldValue)
+                realm.add(groupsList, update: .modified)
+            }
+        }
+        catch {
+            print (error)
+        }
     }
     
     func groupSearch(token: String, query: String, handler: @escaping (Result<[Group]?, Error>) -> Void) {
