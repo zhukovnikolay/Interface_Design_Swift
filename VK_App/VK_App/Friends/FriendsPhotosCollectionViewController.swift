@@ -9,12 +9,12 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import RealmSwift
 
 class FriendsPhotosCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var photos = [Photo]()
-    var photosURLInHighQuality = [String]()
-    var photosURLInLowQuality = [String]()
+    var photosURL = [String]()
     let vkAPI = VKAPI()
     var id: Int = 0
     let countCells = 2
@@ -23,32 +23,50 @@ class FriendsPhotosCollectionViewController: UICollectionViewController, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadPhotosFromDatabase()
+//        Раскомментировать для загрузки из ВК
+        loadPhotosFromVK()
+                
+        
+    }
+
+    func loadPhotosFromDatabase() {
+        do {
+            let realm = try Realm()
+            let realmPhotos = realm.objects(Photo.self).self
+            self.photos = Array(realmPhotos)
+            self.collectionView.reloadData()
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    func loadPhotosFromVK() {
         vkAPI.getPhotos(token: Session.defaultSession.token, ownerId: id, handler: {result in
             switch result {
             case .success(let photos):
                 self.photos = photos
                 photos.forEach {
-                    guard let photoURLInHighQuality = $0.sizes.first(where: {$0.type == "w"})?.url else { return }
-                    guard let photoURLInLowQuality = $0.sizes.first(where: {$0.type == "x"})?.url else { return }
-                    self.photosURLInLowQuality.append(photoURLInLowQuality)
-                    self.photosURLInHighQuality.append(photoURLInHighQuality)
+                    let photoURL = $0.url
+                    self.photosURL.append(photoURL)
                 }
                 self.collectionView.reloadData()
             case .failure(let error):
                 print(error)
             }
         })
-        
     }
-
+    
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photosURLInLowQuality.count
+        return photosURL.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCollectionViewCell
         
-        AF.request(photosURLInLowQuality[indexPath.row]).responseImage { response in
+        AF.request(photosURL[indexPath.row]).responseImage { response in
             if case .success(let image) = response.result {
                 cell.friendPhoto.image = image
             }
@@ -71,7 +89,7 @@ class FriendsPhotosCollectionViewController: UICollectionViewController, UIColle
         guard segue.identifier == "showFullSizePhoto" else { return }
         let destination = segue.destination as! FullSizePhotoViewController
         let cell: PhotoCollectionViewCell = sender as! PhotoCollectionViewCell
-        destination.photosURLInHighQuality = photosURLInHighQuality
+        destination.photosURL = photosURL
         destination.selectedPhotoIndex = self.collectionView.indexPath(for: cell)?.row
     }
 

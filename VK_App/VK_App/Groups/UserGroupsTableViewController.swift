@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import RealmSwift
 
 class UserGroupsTableViewController: UITableViewController {
 
@@ -42,21 +43,38 @@ class UserGroupsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadGroupsFromDatabase()
+        
+//        Раскомментировать для загрузки из ВК
+//        loadGroupsFromVK()
+        
         searchGroups.delegate = self
+    }
+
+    func loadGroupsFromDatabase() {
+        do {
+            let realm = try Realm()
+            let realmGroups = realm.objects(Group.self).self
+            self.groups = Array(realmGroups)
+            self.tableView.reloadData()
+        }
+        catch {
+            print(error)
+        }
+    }
+
+    func loadGroupsFromVK() {
         vkAPI.getUserGroups(token: Session.defaultSession.token, userId: Session.defaultSession.userId, handler: {result in
             switch result {
-            case .success(let groups):
-                self.groups = groups
+            case .success(let loadedGroups):
+                self.groups = loadedGroups
+                print(self.groups)
                 self.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
         })
     }
-
-    // MARK: - Table view data source
-
-
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -67,7 +85,6 @@ class UserGroupsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath) as! GroupTableViewCell
         cell.groupName.text = groups[indexPath.row].name
-//        cell.groupAvatar.image = groups[indexPath.row].avatar
         cell.groupAvatar.af.setImage(withURL: URL(string: groups[indexPath.row].avatar)!)
         return cell
     }
@@ -97,15 +114,8 @@ extension UserGroupsTableViewController: UISearchBarDelegate {
                 }
             })
         } else {
-            vkAPI.getUserGroups(token: Session.defaultSession.token, userId: Session.defaultSession.userId, handler: {result in
-                switch result {
-                case .success(let groups):
-                    self.groups = groups
-                    self.tableView.reloadData()
-                case .failure(let error):
-                    print(error)
-                }
-            })
+//            loadGroupsFromVK()
+            loadGroupsFromDatabase()
         }
     }
 }

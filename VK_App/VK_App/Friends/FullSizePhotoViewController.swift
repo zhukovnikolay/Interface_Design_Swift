@@ -22,7 +22,7 @@ class FullSizePhotoViewController: UIViewController {
     @IBOutlet weak var nextPhoto: UIImageView!
     
     var photos = [Photo]()
-    var photosURLInHighQuality = [String]()
+    var photosURL = [String]()
     var selectedPhotoIndex: Int!
     
     private let transformDecrease = CGAffineTransform(scaleX: 0.9, y: 0.9)
@@ -37,7 +37,7 @@ class FullSizePhotoViewController: UIViewController {
         var photoIndex = 0
         if currentPanDirection == .unknown || currentPanDirection == .left {
             photoIndex = selectedPhotoIndex + 1
-            photoIndex = min(photoIndex, photosURLInHighQuality.count - 1)
+            photoIndex = min(photoIndex, photosURL.count - 1)
         } else if currentPanDirection == .right {
             photoIndex = selectedPhotoIndex - 1
             photoIndex = max(photoIndex, 0)
@@ -61,11 +61,11 @@ class FullSizePhotoViewController: UIViewController {
         nextImageView.alpha = 0
         nextImageView.transform = transformZero
         
-        currentImageView.af.setImage(withURL: URL(string: photosURLInHighQuality[selectedPhotoIndex])!)
+        currentImageView.af.setImage(withURL: URL(string: photosURL[selectedPhotoIndex])!)
         
-        nextImageView.af.setImage(withURL: URL(string: photosURLInHighQuality[nextPhotoIndex])!)
+        nextImageView.af.setImage(withURL: URL(string: photosURL[nextPhotoIndex])!)
         
-        if photosURLInHighQuality.count > 1 {
+        if photosURL.count > 1 {
             panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
             panGesture.minimumNumberOfTouches = 1
             currentImageView.addGestureRecognizer(panGesture)
@@ -115,7 +115,7 @@ class FullSizePhotoViewController: UIViewController {
     }
     
     private func photoSwapping(direction: PanDirection) {
-        nextImageView.af.setImage(withURL: URL(string: photosURLInHighQuality[nextPhotoIndex])!)
+        nextImageView.af.setImage(withURL: URL(string: photosURL[nextPhotoIndex])!)
         
         switch direction {
         case .left:
